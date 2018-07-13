@@ -1,4 +1,4 @@
-Instruções para desenvolvimento
+Download dependencies
 
 1 - npm i @angular/cli
 
