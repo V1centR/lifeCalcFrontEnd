@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import {PanelModule} from 'primeng/panel';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
@@ -10,20 +13,24 @@ import {ButtonModule} from 'primeng/button';
 
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
+import { LoginHomeComponent } from './login-home/login-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuBarComponent,
-    ListaComponent
+    ListaComponent,
+    LoginHomeComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
     ButtonModule,
     MenubarModule,
+    PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
