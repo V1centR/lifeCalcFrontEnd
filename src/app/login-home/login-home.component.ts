@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Observable } from 'rxjs';
+import {LoginExecService} from '../login-exec.service';
 
 @Component({
   selector: 'app-login-home',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-home.component.scss']
 })
 export class LoginHomeComponent implements OnInit {
+  
+  constructor() {
+  }
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  submit(){
+      
+    alert("OK AAA");
+    console.log("Form Submited:: OK");
+    return false;
   }
 
 }

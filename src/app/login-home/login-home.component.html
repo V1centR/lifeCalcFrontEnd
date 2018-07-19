@@ -1,16 +1,16 @@
 <div style="margin-top: 30px;"></div>
 
 <p-panel header="Login">
-	<form>
+	<form >
 		<div class="form-group">
-			<input type="email" class="form-control" id="exampleInputEmail1"
+			<input formControlName="firstName" type="email" class="form-control" id="exampleInputEmail1"
 				aria-describedby="emailHelp" placeholder="Email" style="padding: 10px;">
 		</div>
 		<div class="form-group">
-			<input type="password" class="form-control" id="exampleInputPassword1"
+			<input formControlName="pass" type="password" class="form-control" id="exampleInputPassword1"
 				placeholder="Password">
 		</div>
-		<button type="submit" class="btn btn-primary">login</button>
+		<button (click)="submit()" type="submit" class="btn btn-primary">login</button>
 	</form>
 </p-panel>
 
