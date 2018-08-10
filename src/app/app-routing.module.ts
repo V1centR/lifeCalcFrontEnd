@@ -12,10 +12,6 @@ const routes: Routes = [
     path: 'lista',
     component: ListaComponent
   },
-  {
-    path: 'lista',
-    component: ListaComponent
-  },
 ];
 
 @NgModule({

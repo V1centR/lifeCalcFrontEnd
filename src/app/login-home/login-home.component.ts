@@ -8,16 +8,25 @@ import {LoginExecService} from '../login-exec.service';
   templateUrl: './login-home.component.html',
   styleUrls: ['./login-home.component.scss']
 })
+
 export class LoginHomeComponent implements OnInit {
   
+    
+  loginForm: FormGroup;
+  testName: string;
+    
   constructor() {
   }
 
-  ngOnInit() {}
+  ngOnInit(){
+      
+  }
 
   submit(){
+    this.testName = "Var setup OK!";
       
-    alert("OK AAA");
+    alert("Login:: " + this.loginForm.controls.login.value);
+    console.log("Login:: " + this.loginForm.controls.login.value);
     console.log("Form Submited:: OK");
     return false;
   }
