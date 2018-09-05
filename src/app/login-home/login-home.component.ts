@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, NgForm} from '@angular/forms';
 import { Observable } from 'rxjs';
 import {LoginExecService} from '../login-exec.service';
 
@@ -12,8 +12,10 @@ import {LoginExecService} from '../login-exec.service';
 export class LoginHomeComponent implements OnInit {
   
     
-  loginForm: FormGroup;
+  //loginForm: FormGroup;
   testName: string;
+  emailLogin: string;
+  loginForm: NgForm;
     
   constructor() {
   }
@@ -22,11 +24,10 @@ export class LoginHomeComponent implements OnInit {
       
   }
 
-  submit(){
-    this.testName = "Var setup OK!";
+  execLogin(){
+  
+    console.log("Login:: " + this.emailLogin);
       
-    alert("Login:: " + this.loginForm.controls.login.value);
-    console.log("Login:: " + this.loginForm.controls.login.value);
     console.log("Form Submited:: OK");
     return false;
   }

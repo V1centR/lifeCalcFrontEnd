@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import {PanelModule} from 'primeng/panel';
+import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +31,8 @@ import { LoginHomeComponent } from './login-home/login-home.component';
     HttpClientModule,
     ButtonModule,
     MenubarModule,
-    PanelModule
+    PanelModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

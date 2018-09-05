@@ -1,20 +1,18 @@
-<div style="margin-top: 30px;"></div>
-
+<div style="position:relative; margin:0 auto; max-width:400px; margin-top: 30px;">
 <p-panel header="Login">
-	<form>
+		<form autocomplete="off" #loginForm="ngForm" (ngSubmit)="create()">
 		<div class="form-group">
-			<input formControlName="login" name="login" type="text" class="form-control" id="exampleInputEmail1"
-				aria-describedby="emailHelp" placeholder="Email" style="padding: 10px;">
+			<input pInputText [(ngModel)]="emailLogin" name="login" type="text" class="form-control" id="inputEmail1"
+				placeholder="Email" style="padding: 10px;">
 		</div>
 		<div class="form-group">
-			<input formControlName="pass" name="pass" type="password" class="form-control" id="exampleInputPassword1"
+			<input pPassword [(ngModel)]="passLogin" name="pass" type="password" class="form-control" id="exampleInputPassword1"
 				placeholder="Password">
 		</div>
-		<button (click)="submit()" type="submit" class="btn btn-primary">login</button>
-	</form>	
+		<button (click)="execLogin()" type="submit" class="btn btn-primary">login</button>
+		</form>
 </p-panel>
-
-
+</div>
 
 
 
