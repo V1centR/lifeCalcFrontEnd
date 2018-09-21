@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListaComponent } from './lista/lista.component';
+import {HomePageComponent} from './home-page/home-page.component';
 import { LoginHomeComponent } from './login-home/login-home.component';
 
 const routes: Routes = [
@@ -13,8 +14,8 @@ const routes: Routes = [
     component: ListaComponent
   },
   {
-    path: 'lista',
-    component: ListaComponent
+    path: 'home',
+    component: HomePageComponent
   },
 ];
 
