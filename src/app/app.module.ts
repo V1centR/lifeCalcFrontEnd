@@ -11,17 +11,20 @@ import { ListaComponent } from './lista/lista.component';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule } from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
+import {TabMenuModule} from 'primeng/tabmenu';
 
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
 import { LoginHomeComponent } from './login-home/login-home.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuBarComponent,
     ListaComponent,
-    LoginHomeComponent
+    LoginHomeComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { LoginHomeComponent } from './login-home/login-home.component';
     ButtonModule,
     MenubarModule,
     PanelModule,
-    FormsModule
+    FormsModule,
+    TabMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
