@@ -1,7 +1,7 @@
 body {
-     margin: 0;
+     margin: 0 auto;
+     width: 100%;
      background: #F2F2F2;
-     font-family: 'Montserrat', sans-serif;
      height: 100vh;
 }
 
@@ -14,7 +14,7 @@ body {
     height: 100%;
 
     #content {
-        padding: 30px 50px;
+      
 
         ul {
             list-style-type: none;
