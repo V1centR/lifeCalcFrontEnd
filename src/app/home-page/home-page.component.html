@@ -1,26 +1,35 @@
 <div style="margin-bottom:8px;">
-  <p-tabMenu [model]="items"></p-tabMenu>
+  <div style="font-size: 2em; text-align: center; color: dimgray">
+    <span><i class="fa fa-fw fa-home"></i>&nbsp;</span>
+    
+    <i class="fa fa-fw fa-list"></i>&nbsp;
+    <i class="fa fa-fw fa-cube"></i>&nbsp;
+    <i class="fa fa-fw fa-bank"></i>&nbsp;
+    <i class="fa fa-fw fa-dollar"></i>&nbsp;
+    <i class="fa fa-fw fa-pie-chart"></i>
+
+  </div>
 </div>
 <div class="jumbotron">
     <div>
       <h2>Dashboard</h2>
 
       <div style=" margin-bottom: 20px;">
-        <input type="text" class="form-control" pInputText [(ngModel)]="gastarMoney" style="padding:20px; font-size:1.4em;"/>
+        <input type="text" class="form-control" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText [(ngModel)]="gastarMoney" style="padding:20px; font-size:1.4em;"/>
         <button type="button" class="btn btn-danger btn-lg" (click)="execGastar()" style="width:100%; margin-top:6px;">Gastar</button>
       </div>
       <div style="font-size:1.4em;">
           <b>Saldo:</b>&nbsp;&nbsp;<span class="badge badge-success">R$ {{saldo | number : '1.2-2'}}</span>
       </div>
       <div style="font-size:1.4em;">
-        <b>Saídas hoje:</b>&nbsp;&nbsp; <span class="badge badge-warning">R$ 7,40</span>
+        <b>Saídas hoje:</b>&nbsp;&nbsp; <span class="badge {{setColorMessage}}">R$ {{currentGasto | number: '1.2-2'}}</span>
       </div>
       <div style="font-size:1.4em;">
-        <b>Permitido:</b>&nbsp;&nbsp; <span class="badge badge-primary">R$ 18,75</span>
+        <b>Permitido:</b>&nbsp;&nbsp; <span class="badge badge-primary">R$ {{limite | number:'1.2-2'}}</span>
       </div>
       <!--Messages -->
       <div class="alert alert-danger" role="alert" style="margin-top:20px;">
-        ATENÇÃO! você já esta na metade de seu limite diário!
+        ATENÇÃO! {{alertMessage}}
       </div>
       
     </div>
