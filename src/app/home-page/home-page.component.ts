@@ -11,30 +11,46 @@ export class HomePageComponent implements OnInit {
   items;
   gastarMoney:number;
   saldo:number = 10000;
+  currentGasto: number = 0;
+  limite: number;
+  alertMessage: string;
+  setColorMessage: string;
 
   ngOnInit() {
-
-    this.items = [
-      {label: 'Home', icon: 'fa fa-fw fa-home'},
-      {label: 'Categorias', icon: 'fa fa-fw fa-list'},
-      {label: 'Produtos', icon: 'fa fa-fw fa-cube'},
-      {label: 'Centro de Custos', icon: 'fa fa-fw fa-bank'},
-      {label: 'Gastos', icon: 'fa fa-fw fa-dollar'},
-      {label: 'Relatórios', icon: 'fa fa-fw fa-pie-chart'}
-  ];
-  }
+  
+    this.setLimit();
+    this.setColorMessage = "badge-warning";
+    this.alertMessage = "Fique atento ao seu limite diário!"
+}
 
   execGastar(){
 
     console.log("Gasto: " + this.gastarMoney);
 
     this.saldo = this.saldo -= this.gastarMoney;
+    this.currentGasto = this.currentGasto += this.gastarMoney;
+
+    if(this.currentGasto >= this.limite){
+      this.alertMessage = "Você atingiu seu limite diário!";
+      this.setColorMessage = "badge-danger";
+    } else {
+      this.alertMessage = "Fique atento ao seu limite diário!"
+    }
 
     this.gastarMoney = null;
   }
 
+  setLimit(){
+    this.limite = 18.50;
+
+  }
+
   getSaldo(){
 
+
+  }
+
+  setMEssage(){
 
   }
 

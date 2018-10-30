@@ -17,6 +17,7 @@ import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
 import { LoginHomeComponent } from './login-home/login-home.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { NgxCurrencyModule } from "ngx-currency";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     MenubarModule,
     PanelModule,
     FormsModule,
-    TabMenuModule
+    TabMenuModule,
+    NgxCurrencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
