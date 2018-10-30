@@ -1,16 +1,4 @@
-<div style="margin-bottom:8px;">
-  <div style="font-size: 2em; text-align: center; color: dimgray">
-    <span><i class="fa fa-fw fa-home"></i>&nbsp;</span>
-    
-    <i class="fa fa-fw fa-list"></i>&nbsp;
-    <i class="fa fa-fw fa-cube"></i>&nbsp;
-    <i class="fa fa-fw fa-bank"></i>&nbsp;
-    <i class="fa fa-fw fa-dollar"></i>&nbsp;
-    <i class="fa fa-fw fa-pie-chart"></i>
-
-  </div>
-</div>
-<div class="jumbotron">
+<div class="jumbotron" style="margin: 0.5em; padding:1em;">
     <div>
       <h2>Dashboard</h2>
 
@@ -29,7 +17,10 @@
       </div>
       <!--Messages -->
       <div class="alert alert-danger" role="alert" style="margin-top:20px;">
-        ATENÇÃO! {{alertMessage}}
+        <strong>ATENÇÃO!</strong> {{alertMessage}}
+      </div>
+      <div class="alert alert-info" role="alert" style="margin-top:20px;">
+        <strong>INFO!</strong> Você trabalhou 1h25m para realizar este gasto!
       </div>
       
     </div>
