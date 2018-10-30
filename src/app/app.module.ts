@@ -18,6 +18,7 @@ import {MenuItem} from 'primeng/api';
 import { LoginHomeComponent } from './login-home/login-home.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NgxCurrencyModule } from "ngx-currency";
+import { MenuInternoComponent } from './menu-interno/menu-interno.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgxCurrencyModule } from "ngx-currency";
     MenuBarComponent,
     ListaComponent,
     LoginHomeComponent,
-    HomePageComponent
+    HomePageComponent,
+    MenuInternoComponent
   ],
   imports: [
     BrowserModule,
