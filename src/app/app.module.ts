@@ -13,6 +13,7 @@ import {HttpClientModule } from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
@@ -44,7 +45,8 @@ import { ProdutosComponent } from './produtos/produtos.component';
     FormsModule,
     TabMenuModule,
     NgxCurrencyModule,
-    DropdownModule
+    DropdownModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
