@@ -22,6 +22,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import { MenuInternoComponent } from './menu-interno/menu-interno.component';
 import { ProdutosComponent } from './produtos/produtos.component';
+import { CentroCustosComponent } from './centro-custos/centro-custos.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProdutosComponent } from './produtos/produtos.component';
     LoginHomeComponent,
     HomePageComponent,
     MenuInternoComponent,
-    ProdutosComponent
+    ProdutosComponent,
+    CentroCustosComponent
   ],
   imports: [
     BrowserModule,
