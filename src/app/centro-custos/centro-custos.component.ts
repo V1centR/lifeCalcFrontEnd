@@ -15,6 +15,10 @@ export class CentroCustosComponent implements OnInit {
   }
 
   register(){
+
+    let time = new Date().getTime();
+    this.cost.timeinmillis = time;
+
     console.log("Dados:: " + JSON.stringify(this.cost));
   }
 
