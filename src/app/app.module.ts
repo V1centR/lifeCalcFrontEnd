@@ -13,6 +13,7 @@ import {HttpClientModule } from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
@@ -21,6 +22,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import { MenuInternoComponent } from './menu-interno/menu-interno.component';
 import { ProdutosComponent } from './produtos/produtos.component';
+import { CentroCustosComponent } from './centro-custos/centro-custos.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ProdutosComponent } from './produtos/produtos.component';
     LoginHomeComponent,
     HomePageComponent,
     MenuInternoComponent,
-    ProdutosComponent
+    ProdutosComponent,
+    CentroCustosComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { ProdutosComponent } from './produtos/produtos.component';
     FormsModule,
     TabMenuModule,
     NgxCurrencyModule,
-    DropdownModule
+    DropdownModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

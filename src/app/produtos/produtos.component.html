@@ -1,19 +1,19 @@
 <div class="container-fluid">
- 
+ <h2>Produtos</h2>
     <div class="form-group">
-      <label for="exampleInputEmail1">Nome</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="nome do produto">
+      <label for="exampleInputEmail1">Nome</label><br>
+      <input type="text" pInputText [(ngModel)]="prod.name" placeholder="Nome do produto"/>
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Categoria</label><br>
-      <p-dropdown [options]="categories" [(ngModel)]="name" optionLabel="name"></p-dropdown>
+      <p-dropdown [options]="categories" [(ngModel)]="prod.category" optionLabel="name"></p-dropdown>
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Descrição</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="categoria">
+      <label for="exampleInputEmail1">Descrição</label><br>
+      <input type="text" pInputText [(ngModel)]="prod.description" placeholder="Descrição"/><br>
       <small id="emailHelp" class="form-text text-muted">Descrição breve do item</small>
     </div>
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" style="width:100%" (click)="register()">Registrar</button>
 
 </div>
