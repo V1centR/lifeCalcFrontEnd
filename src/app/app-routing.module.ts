@@ -4,6 +4,8 @@ import { ListaComponent } from './lista/lista.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import { LoginHomeComponent } from './login-home/login-home.component';
 import {ProdutosComponent} from './produtos/produtos.component';
+import { CentroDeCustoComponent } from './centro-de-custo/centro-de-custo.component';
+import { RelatoriosComponent } from './relatorios/relatorios.component';
 
 const routes: Routes = [
   {
@@ -24,8 +26,13 @@ const routes: Routes = [
   },
   {
     path: 'centro-de-custo',
-    component: ProdutosComponent
-  }
+    component: CentroDeCustoComponent
+  },
+  {
+    path: 'relatorios',
+    component: RelatoriosComponent
+  },
+  
 ];
 
 @NgModule({
