@@ -14,6 +14,7 @@ import {HttpClientModule } from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {DropdownModule} from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
 
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
@@ -51,6 +52,7 @@ import { RelatoriosComponent } from './relatorios/relatorios.component';
     NgxCurrencyModule,
     DropdownModule,
     CheckboxModule
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
