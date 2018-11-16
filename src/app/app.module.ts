@@ -3,6 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import {PanelModule} from 'primeng/panel';
 import {FormsModule} from '@angular/forms';
+import {CheckboxModule} from 'primeng/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NgxCurrencyModule } from "ngx-currency";
 import { MenuInternoComponent } from './menu-interno/menu-interno.component';
 import { ProdutosComponent } from './produtos/produtos.component';
-import { CentroCustosComponent } from './centro-custos/centro-custos.component';
+import { CentroDeCustoComponent } from './centro-de-custo/centro-de-custo.component';
+import { RelatoriosComponent } from './relatorios/relatorios.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { CentroCustosComponent } from './centro-custos/centro-custos.component';
     HomePageComponent,
     MenuInternoComponent,
     ProdutosComponent,
-    CentroCustosComponent
+    CentroDeCustoComponent,
+    RelatoriosComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { CentroCustosComponent } from './centro-custos/centro-custos.component';
     TabMenuModule,
     NgxCurrencyModule,
     DropdownModule,
+    CheckboxModule
     InputTextModule
   ],
   providers: [],
