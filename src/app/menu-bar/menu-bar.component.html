@@ -1,3 +1,36 @@
-<div class="ng-tns-c0-0" id="layout-topbar"></div>
+<div class="ng-tns-c0-0" id="layout-topbar">
+    <div style="font-size: 2.3em; text-align: center; color: dimgray; margin-top: 0.5em;">
+        <!-- Home -->
+        <a [routerLink]="['/home']" class="menuItem">
+          <i class="fa fa-fw fa-home"></i>
+        </a>&nbsp;
+        
+        <!-- Categorias -->
+        <a [routerLink]="['/home']" class="menuItem">
+          <i class="fa fa-fw fa-list"></i>
+        </a>&nbsp;
+    
+        <a [routerLink]="['/produtos']" class="menuItem">
+          <!-- Produtos -->
+          <i class="fa fa-fw fa-cube"></i>
+        </a>&nbsp;
+    
+        <!-- Centro de custos -->
+        <a [routerLink]="['/centro-de-custo']" class="menuItem">
+          <i class="fa fa-fw fa-bank"></i>
+        </a>&nbsp;
+    
+        <!-- Gastos -->
+        <!-- <a [routerLink]="['/gastos']" class="menuItem">
+          <i class="fa fa-fw fa-dollar"></i>
+        </a>&nbsp; -->
+    
+        <!-- Relatorios -->
+        <a [routerLink]="['/dashboard']" class="menuItem">
+          <i class="fa fa-fw fa-pie-chart"></i>
+        </a>&nbsp;
+    
+      </div>
+</div>
 <div style="height: 74px;"></div>
 <div style="width: 100%; margin: 10px;"></div>

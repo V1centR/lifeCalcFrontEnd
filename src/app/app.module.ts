@@ -14,6 +14,7 @@ import {HttpClientModule } from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {DropdownModule} from 'primeng/dropdown';
+import {ChartModule} from 'primeng/chart';
 
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
@@ -24,6 +25,16 @@ import { MenuInternoComponent } from './menu-interno/menu-interno.component';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { CentroDeCustoComponent } from './centro-de-custo/centro-de-custo.component';
 import { RelatoriosComponent } from './relatorios/relatorios.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {CalendarModule} from 'primeng/calendar';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { LOCALE_ID } from '@angular/core';
+import ptBr from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -35,7 +46,9 @@ import { RelatoriosComponent } from './relatorios/relatorios.component';
     MenuInternoComponent,
     ProdutosComponent,
     CentroDeCustoComponent,
-    RelatoriosComponent
+    RelatoriosComponent,
+    DashboardComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -50,9 +63,14 @@ import { RelatoriosComponent } from './relatorios/relatorios.component';
     TabMenuModule,
     NgxCurrencyModule,
     DropdownModule,
-    CheckboxModule
+    CheckboxModule,
+    ChartModule,
+    CalendarModule,
+    MessagesModule,
+    MessageModule,
+    RadioButtonModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'pt'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

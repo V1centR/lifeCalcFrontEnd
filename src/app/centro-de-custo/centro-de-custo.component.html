@@ -1,16 +1,20 @@
 <div class="container-fluid">
   <h3>Centro de custos</h3>
+
+  <p-messages [(value)]="msgsRegister"></p-messages>
+
   <div class="form-group">
+  <form autocomplete="off" #form="ngForm">
     <label for="moneyBase">Teto de gastos</label>
-    <input type="text" class="form-control" id="moneyBase" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText [(ngModel)]="moneyBase" style="padding:20px; font-size:1.4em;"/>
+    <input type="text" class="form-control" name="base" id="moneyBase" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText [(ngModel)]="costCenter.base" style="padding:20px; font-size:1.4em;" required/>
     <small id="moneyBase" class="form-text text-muted">Valor mensal, salário ou quantia específica que deseje controlar.</small>
-  </div>
-  <div class="form-group">
-      <label for="exampleInputEmail1">Resumo</label><br>
-      Jan : <span class="badge badge-primary" style="margin-bottom:0.5em">2500,00</span> - <span class="badge badge-danger"> - 475,80</span><br>
-      Fev : <span class="badge badge-primary" style="margin-bottom:0.5em">2350,00</span> - <span class="badge badge-success">  823,10</span><br>
-      Mar : <span class="badge badge-primary" style="margin-bottom:0.5em">2200,50</span> - <span class="badge badge-success">  475,32</span><br>
-      Abr : <span class="badge badge-primary" style="margin-bottom:0.5em">1802,75</span> - <span class="badge badge-danger"> - 1805,90</span><br>
-  </div>
-  <button type="submit" class="btn btn-lg btn-primary" style="width:100%;"><strong><i class="fa fa-fw fa-dollar"></i>Registrar</strong></button>
+  
+    <div class="ui-g-12 ui-md-6" style="text-align: center;">
+        <p-radioButton name="costCenterMoney" name="costCenter" value="Dinheiro" label="Dinheiro" [(ngModel)]="costCenter.name" required></p-radioButton>&nbsp;&nbsp;
+        <p-radioButton name="costCenterCartao" name="costCenter" label="Cartão de créd" value="Cartão de crédito" [(ngModel)]="costCenter.name" required></p-radioButton>&nbsp;&nbsp;
+        <p-radioButton name="costCenterVr" name="costCenter" label="VR" value="vr" [(ngModel)]="costCenter.name" required></p-radioButton>&nbsp;&nbsp;
+        <p-radioButton name="costCenterVr" name="costCenter" label="VA" value="va" [(ngModel)]="costCenter.name" required></p-radioButton>&nbsp;&nbsp;
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary" [disabled]="!form.valid" style="width:100%;" (click)="registerCash()"><strong><i class="fa fa-fw fa-dollar"></i>Registrar</strong></button>
+  </form> 
 </div>
