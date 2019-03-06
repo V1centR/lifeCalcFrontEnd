@@ -21,7 +21,7 @@ export class OperationService {
   }
 
   findByMonthRange(date): Observable<any> {
-    console.log(date);
+    console.log("findByMonthRange" + date.startDate);
     return this.http.post(`${this.LC_API}/op/month-range`,date);
   }
 

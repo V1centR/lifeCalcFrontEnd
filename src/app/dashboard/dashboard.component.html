@@ -16,12 +16,12 @@
 
             <div class="ui-g-12 ui-md-6" *ngIf="datarange">
                 <label>Data início</label>
-                <p-calendar [(ngModel)]="startDate" name="startDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2023" required></p-calendar>
+                <p-calendar [(ngModel)]="startDate" readonlyInput="true" name="startDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2023" required></p-calendar>
             </div>
             
             <div class="ui-g-12 ui-md-6" *ngIf="datarange">
                 <label>Data final</label>
-                <p-calendar [(ngModel)]="finalDate" name="finalDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2023" required></p-calendar>
+                <p-calendar [(ngModel)]="finalDate" readonlyInput="true" name="finalDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2023" required></p-calendar>
             </div>
             <div class="ui-g-12 ui-md-6">
                 <p-button label="Generate Chart" [disabled]="!reportForm.valid" icon="fa fa-line-chart" iconPos="left" (onClick)="getDynamicChart()"></p-button>
@@ -56,6 +56,8 @@
         <span class="badge badge-secondary" *ngIf="chartDailyGraph">{{percentLost | number : '1.1-2' }}%</span>
     </h4>
     
+    <p-chart type="bar" [data]="monthRangeChart" *ngIf="displayMonthRange"></p-chart>
+
     <p-chart type="line" [data]="dailyChart" [options]="options" *ngIf="chartDailyGraph"></p-chart>
 
     <p-messages [(value)]="transActionMessage"></p-messages>

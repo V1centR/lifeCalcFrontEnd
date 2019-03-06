@@ -77,12 +77,12 @@ export class HomePageComponent implements OnInit {
 
     this.operation.save(this.operartion).toPromise().then(res => {
       
-    if (res === "CREATED") {
-      this.form.reset();
-      this.msgsRegister.push({severity:'success', summary:'Atenção', detail:'Despesa criada com sucesso'});
-      this.getToday();
-      this. getCenterCosts();
-    }
+      if (res === "CREATED") {
+        this.form.reset();
+        this.msgsRegister.push({severity:'success', summary:'Atenção', detail:'Despesa criada com sucesso'});
+        this.getToday();
+        this. getCenterCosts();
+      }
 
     }).catch(err => {
       this.msgsRegister.push({severity:'error', summary:'Atenção', detail:'Não foi possível criar a despesa.'});
@@ -122,23 +122,18 @@ export class HomePageComponent implements OnInit {
   async getCenterCosts(){
 
    await this.centerCostService.getLastCostCenter("Dinheiro").toPromise().then(res => {
+
       console.log(res);
-
-      console.log("Gasto Atual" + this.currentGasto);
-      
-
       //global set here
       this.centerCostLimit = res['base'];
 
-      console.log("into SetLimit:: " + this.centerCostLimit);
-      this.percentualExit = (this.currentGasto/this.centerCostLimit)*100;
-
-      this.setMessagesPercent(this.percentualExit);
-      //this.setMessagesPercent(1.6);
-      console.log("Percentual gasto hoje:: " + this.percentualExit);
-
       //Set msg daily limit
       this.limite = this.centerCostLimit/this.numDaysInMonth();
+
+      this.percentualExit = (this.currentGasto/this.limite)*100;
+      this.setMessagesPercent(this.percentualExit);
+
+      console.log("Percentual gasto hoje:: " + this.percentualExit);
         
       res ? this.costAvailable.push({"name":res['name'],"id":res['id']}) : null;
 
@@ -164,14 +159,18 @@ export class HomePageComponent implements OnInit {
     38,70 = 3.22% de $1200
     ProvaReal: 3.22*31 = 99.82 perto de 100%
     */
-    
 
-   percent == 0 ? this.msgsStatus.push({severity:'success', summary:'Impressionante!', detail:'Você não gastou nada hoje!.'}) : null;
-   percent > 0.1 && percent <= 1 ? this.msgsStatus.push({severity:'info', summary:'Atenção', detail:'Fique atento ao seu limite!.'}) : null;
-   percent > 1.1 && percent <= 2 ? this.msgsStatus.push({severity:'warn', summary:'Atenção', detail:'Vc já esta na metade de seu limite.'}) : null;
-   percent > 2.1 && percent <= 2.9 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Seu limite esta quase no fim!'}) :null;
-   percent >= 3 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Você esta no seu limite'}) :null;
-  
+    percent == 0 ? this.msgsStatus.push({severity:'success', summary:'Impressionante!', detail:'Você não gastou nada hoje!.'}) : null;
+    percent > 0.1 && percent <= 20 ? this.msgsStatus.push({severity:'info', summary:'Atenção', detail:'Fique atento ao seu limite!.'}) :null;
+    percent > 20.1 && percent <= 30 ? this.msgsStatus.push({severity:'info', summary:'Atenção', detail:'Fique atento ao seu limite.'}) : null;
+    percent > 30.1 && percent <= 49 ? this.msgsStatus.push({severity:'info', summary:'Atenção', detail:'Você esta quase na metade de seu limite!'}) :null;
+    percent >= 50.0 && percent <= 50.9 ? this.msgsStatus.push({severity:'warn', summary:'Atenção', detail:'Vc atingiu metade de seu limite fique atento!'}) :null;
+    percent >= 60 && percent <= 70.9 ? this.msgsStatus.push({severity:'warn', summary:'Atenção', detail:'Você já ultrapassou metade de seu limite diário'}) :null;
+    percent >= 80 && percent <= 99.9 ? this.msgsStatus.push({severity:'warn', summary:'Atenção', detail:'Seu limite esta quase no fim!'}) :null;
+    percent >=100 && percent <= 109.9 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Você atingiu seu limite diário'}) :null;
+    percent >=110 && percent <= 119.9 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Limite diário ultrapassado, cessar gastos imediatamente'}) :null;
+    percent >=200 && percent <= 299.9 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Limite diário ultrapassado, seu orçamento está comprometido'}) :null;
+    percent > 300 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Limite diário ultrapassado, seu centro de custo vai quebrar nesse rítimo!'}) :null;
    
   }
 

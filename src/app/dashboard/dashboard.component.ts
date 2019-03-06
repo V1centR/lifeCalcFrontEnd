@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
 
   data: any;
   dailyChart: any;
+  monthRangeChart:any;
 
   categoria:any;
   meses;
@@ -61,6 +62,7 @@ export class DashboardComponent implements OnInit {
 
   inputReportDaily:boolean= false;
   inputReportWeek:boolean = false;
+  displayMonthRange:boolean = false;
 
   typeReportWeek;
 
@@ -210,23 +212,19 @@ setFormMonth(event){
                 this.makeDailyChart(res);
             });
         }
-
-        console.log("Date Range:: " + dateRange);
             
-        await this.opService.findByMonthRange(dateRange).subscribe(res => {
-            console.log("Month search exec ok ::");
+        await this.opService.findByMonthRange(dateRange).toPromise().then(res => {
+            
+            console.log("RES 1:: " + res);
             
             //this.typeReport == "month" ? this.makeMonthChart(res) : false;
             this.typeReport == "month" ? this.eachMonthChart(res) : false;
         });
 
         // if((dayDiff/one_day) >=31){
-
         //     this.limitExceed();
-
         // }else{
 
-         
         // }
     }
 
@@ -234,6 +232,59 @@ setFormMonth(event){
 
         console.log("eachMonthChart VVV");
         console.log(res);
+
+        let values = [];
+        let monthLabel = [];
+
+        this.displayMonthRange = true;
+        this.chartDailyGraph = false;
+        this.chartGraph = false;
+
+        res.forEach(element => {
+            
+            let timeStamp = new Date(element['date']);
+            let valueData = element['total'];
+
+            monthLabel.push(element['date']);
+            values.push(valueData);
+        });
+
+        //Graphic here
+        this.monthRangeChart = {
+            labels: monthLabel,
+            datasets: [
+                {
+                    label: 'Relatório por mês',
+                    backgroundColor: '#42A5F5',
+                    data: values,
+                    fill: false,
+                    //borderColor: '#4bc0c0'
+                    //ff3b00 vermelho 
+                }
+            ]
+        };
+
+        this.options = {
+            title: {
+                // display: true,
+                // text: 'Transactions',
+                // fontSize: 16
+            },
+            legend: {
+                display: true,
+                position: 'bottom'
+            },
+            scales: {
+                yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+                }]
+            }
+        };
+
+        this.reportForm.reset();
+
     }
 
     changeForm(event){
