@@ -1,27 +1,39 @@
 <div class="jumbotron" style="margin: 0.5em; padding:1em;">
     <div>
-      <h2>Dashboard</h2>
+      <h2>Lançar</h2>
 
       <div style=" margin-bottom: 20px;">
-        <input type="text" class="form-control" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText [(ngModel)]="gastarMoney" style="padding:20px; font-size:1.4em;"/>
-        <button type="button" class="btn btn-danger btn-lg" (click)="execGastar()" style="width:100%; margin-top:6px;">Gastar</button>
+        <form autocomplete="off" #form="ngForm">
+          <p style="margin-bottom: 0.5em;">
+             <label>Retroativo</label>&nbsp;&nbsp;<p-checkbox name="retroCheck" (click)="retroCheckValid()" binary="true" value="retroCheck" [(ngModel)]="retroCheck"></p-checkbox><br>
+             <p-calendar *ngIf="retroRegister" [readonlyInput]="true" name="retro" [timeOnly]="true" [(ngModel)]="operartion.retro" showTime="true" hourFormat="24"></p-calendar>
+          </p>
+
+          <input type="text" name="gasto" class="form-control" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText [(ngModel)]="operartion.value" style="padding:20px; font-size:1.4em;" required/>
+          
+          <p style="margin-top: 0.5em;">
+            <p-dropdown readonlyInput="true" [options]="categories" name="produto" optionLabel="name" [(ngModel)]="operartion.produto" [style]="{'width':'100%'}" [filter]="true" required></p-dropdown>
+          </p>
+
+          <div class="ui-g-6 ui-md-6">
+            <span *ngFor="let item of costAvailable">
+                <p-radioButton name="entryDispend{{item.name}}" value="{{item.id}}" label="{{item.name}}" [(ngModel)]="operartion.centroCusto" required></p-radioButton>&nbsp;&nbsp;
+            </span>
+          </div>
+          <button type="button" [disabled]="!form.valid" class="btn btn-danger btn-lg" (click)="execGastar()" style="width:100%; margin-top:6px;">Gastar</button>
+        </form>
       </div>
-      <div style="font-size:1.4em;">
-          <b>Saldo:</b>&nbsp;&nbsp;<span class="badge badge-success">R$ {{saldo | number : '1.2-2'}}</span>
+
+      <div style="font-size:3em;">
+        <span class="badge {{setColorMessage}}" style="width:100%">R$ {{currentGasto | number: '1.2-2'}}</span>
       </div>
-      <div style="font-size:1.4em;">
-        <b>Saídas hoje:</b>&nbsp;&nbsp; <span class="badge {{setColorMessage}}">R$ {{currentGasto | number: '1.2-2'}}</span>
-      </div>
-      <div style="font-size:1.4em;">
-        <b>Permitido:</b>&nbsp;&nbsp; <span class="badge badge-primary">R$ {{limite | number:'1.2-2'}}</span>
+
+      <div style="font-size:1.4em;margin-top: 1em;">
+        <b>Diário:</b>&nbsp;&nbsp; <span class="badge badge-primary">R$ {{limite | number:'1.2-2'}}</span>&nbsp;<span class="badge badge-primary">{{percentualExit | number: '1.1-1'}}%</span>
       </div>
       <!--Messages -->
-      <div class="alert alert-danger" role="alert" style="margin-top:20px;">
-        <strong>ATENÇÃO!</strong> {{alertMessage}}
-      </div>
-      <div class="alert alert-info" role="alert" style="margin-top:20px;">
-        <strong>INFO!</strong> Você trabalhou 1h25m para realizar este gasto!
-      </div>
+      <p-messages [(value)]="msgsRegister"></p-messages>
+      <p-messages [(value)]="msgsStatus" [closable]="false"></p-messages>
       
     </div>
   </div>

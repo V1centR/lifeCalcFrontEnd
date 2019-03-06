@@ -1,0 +1,65 @@
+<div style="padding: 2em;">
+
+    <div class="ui-g ui-fluid">
+        <form autocomplete="off" #reportForm="ngForm">
+            <div class="ui-g-12 ui-md-6">
+
+                <p-radioButton name="typeReportDaily" value="daily" (click)="changeForm($event)" label="Diário"         [(ngModel)]="typeReport"></p-radioButton>&nbsp;&nbsp;
+                <p-radioButton name="typeReportMonth" label="Mensal" (click)="changeForm($event)" value="month"         [(ngModel)]="typeReport"></p-radioButton>&nbsp;&nbsp;
+                <p-radioButton name="typeReportYear" label="Anual (Atenção)" (click)="changeForm($event)" value="year"  [(ngModel)]="typeReport"></p-radioButton>&nbsp;&nbsp;
+            </div>
+
+            <div class="ui-g-12 ui-md-6" *ngIf="dayInputForm">
+                <label>Selecione o dia</label>
+                <p-calendar readonlyInput="true" [(ngModel)]="dayInput" name="oneDay" dateFormat="dd/mm/yy" required></p-calendar>
+            </div>
+
+            <div class="ui-g-12 ui-md-6" *ngIf="datarange">
+                <label>Data início</label>
+                <p-calendar [(ngModel)]="startDate" readonlyInput="true" name="startDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2023" required></p-calendar>
+            </div>
+            
+            <div class="ui-g-12 ui-md-6" *ngIf="datarange">
+                <label>Data final</label>
+                <p-calendar [(ngModel)]="finalDate" readonlyInput="true" name="finalDate" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2019:2023" required></p-calendar>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+                <p-button label="Generate Chart" [disabled]="!reportForm.valid" icon="fa fa-line-chart" iconPos="left" (onClick)="getDynamicChart()"></p-button>
+            </div>
+        </form>
+    </div>
+
+    <div class="ui-g" *ngIf="chartGraph">            
+        <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard-frames">
+            <span style="font-size: 3em;"><i class="fa fa-fw fa-arrow-down"></i></span>
+            Total mês: <strong>{{fullValue | currency:'R$':true:'2.2-4'}} </strong>
+        </div>
+
+        <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard-frames" >
+                <span style="font-size: 3em; font-weight: bold;">%</span>
+                Relação gasto/montante: <span [style.color]="setColor"> <strong>{{percentLost | number : '1.1-2' }}%</strong></span>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard-frames">
+            
+            <span style="font-size: 3em;"><i class="fa fa-fw fa-credit-card"></i></span>
+            Dinheiro: <strong>R$ 15.187,41</strong> Vale-Refeição: <strong>R$ 0,00</strong>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-lg-3 dashboard-frames" style="padding-top: 0.7em;">
+            <span style="font-size: 3em;"><i class="fa fa-fw fa-money"></i></span>
+            ATM Gets: <strong>R$ 3.780.00</strong>
+        </div>
+    </div>
+
+    <h4>
+        <span class="badge badge-secondary" *ngIf="chartDailyGraph">Referência: {{daySelected}}</span>&nbsp;&nbsp;
+        <span class="badge badge-secondary" *ngIf="chartDailyGraph">Total: {{totalDispends | currency:'BRL':true}}</span>&nbsp;&nbsp;
+        <span class="badge badge-secondary" *ngIf="chartDailyGraph">{{percentLost | number : '1.1-2' }}%</span>
+    </h4>
+    
+    <p-chart type="bar" [data]="monthRangeChart" *ngIf="displayMonthRange"></p-chart>
+
+    <p-chart type="line" [data]="dailyChart" [options]="options" *ngIf="chartDailyGraph"></p-chart>
+
+    <p-messages [(value)]="transActionMessage"></p-messages>
+    <p-chart type="line" [data]="data" [options]="options" *ngIf="chartGraph"></p-chart>
+</div>

@@ -1,0 +1,16 @@
+.ui-g div.dashboard-frames{
+    background-color: #f9f9f9;
+    text-align: center;
+    color: #202020;
+    border: 1px solid #efefef;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+}
+.ui-g  div.red{
+    background-color: #cce4f7;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+}
+.ui-g {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
