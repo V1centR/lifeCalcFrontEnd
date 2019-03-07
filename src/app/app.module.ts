@@ -15,6 +15,7 @@ import {ButtonModule} from 'primeng/button';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {DropdownModule} from 'primeng/dropdown';
 import {ChartModule} from 'primeng/chart';
+import {InputTextModule} from 'primeng/inputtext';
 
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
@@ -65,12 +66,15 @@ registerLocaleData(ptBr);
     TabMenuModule,
     NgxCurrencyModule,
     DropdownModule,
+    linkServices
     CheckboxModule,
     ChartModule,
     CalendarModule,
     MessagesModule,
     MessageModule,
     RadioButtonModule
+    CheckboxModule
+    InputTextModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'pt'}],
   bootstrap: [AppComponent]

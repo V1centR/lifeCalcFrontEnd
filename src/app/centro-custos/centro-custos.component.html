@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <h2>Centro de Custos</h2>
+     <div class="form-group">
+       <label for="exampleInputEmail1">Montante Principal</label><br>
+       <input type="text" class="form-control" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText [(ngModel)]="cost.value"/><br>
+       <small id="emailHelp" class="form-text text-muted">Aqui deve ser inserido todo valor que entrar.</small>
+     </div>
+     <button type="submit" class="btn btn-primary" style="width:100%" (click)="register()">Registrar</button>
+ </div>
+ 
