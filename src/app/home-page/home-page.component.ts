@@ -53,14 +53,10 @@ export class HomePageComponent implements OnInit {
     this. getCenterCosts();
 
     console.log(this.numDaysInMonth());
-    ;
-    this.setColorMessage = "badge-warning";
-    this.alertMessage = "Fique atento ao seu limite diário!";
 }
 
   retroCheckValid(){
     console.log(this.retroCheck);
-
     //retroRegister
     this.retroCheck == true ? this.retroRegister = true : this.retroRegister = false;
     
@@ -68,7 +64,6 @@ export class HomePageComponent implements OnInit {
 
   execGastar(){
 
-    console.log("::Gasto::");
     this.saldo = this.saldo -= this.gastarMoney;
     this.currentGasto = this.currentGasto += this.gastarMoney;
 
@@ -87,13 +82,6 @@ export class HomePageComponent implements OnInit {
     }).catch(err => {
       this.msgsRegister.push({severity:'error', summary:'Atenção', detail:'Não foi possível criar a despesa.'});
     });
-
-    if(this.currentGasto >= this.limite){
-      this.alertMessage = "Você atingiu seu limite diário!";
-      this.setColorMessage = "badge-danger";
-    } else {
-      this.alertMessage = "Fique atento ao seu limite diário!"
-    }
 
     this.gastarMoney = null;
   }
@@ -141,12 +129,6 @@ export class HomePageComponent implements OnInit {
       console.log(err);
     });
 
-    this.centerCostService.getLastCostCenter("vr").toPromise().then(res => {
-      res ? this.costAvailable.push({"name":res['name'],"id":res['id']}) : null;
-    }).catch(err => {
-      console.log(err);
-    });
-
     console.log(this.costAvailable);
    
   }
@@ -160,6 +142,8 @@ export class HomePageComponent implements OnInit {
     ProvaReal: 3.22*31 = 99.82 perto de 100%
     */
 
+    this.msgsStatus = [];
+
     percent == 0 ? this.msgsStatus.push({severity:'success', summary:'Impressionante!', detail:'Você não gastou nada hoje!.'}) : null;
     percent > 0.1 && percent <= 20 ? this.msgsStatus.push({severity:'info', summary:'Atenção', detail:'Fique atento ao seu limite!.'}) :null;
     percent > 20.1 && percent <= 30 ? this.msgsStatus.push({severity:'info', summary:'Atenção', detail:'Fique atento ao seu limite.'}) : null;
@@ -170,7 +154,7 @@ export class HomePageComponent implements OnInit {
     percent >=100 && percent <= 109.9 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Você atingiu seu limite diário'}) :null;
     percent >=110 && percent <= 119.9 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Limite diário ultrapassado, cessar gastos imediatamente'}) :null;
     percent >=200 && percent <= 299.9 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Limite diário ultrapassado, seu orçamento está comprometido'}) :null;
-    percent > 300 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Limite diário ultrapassado, seu centro de custo vai quebrar nesse rítimo!'}) :null;
+    percent > 300 ? this.msgsStatus.push({severity:'error', summary:'Atenção', detail:'Limite diário ultrapassado, seu centro de custo tem desfalque!'}) :null;
    
   }
 

@@ -33,6 +33,7 @@ import { LOCALE_ID } from '@angular/core';
 import ptBr from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import { CategoriesComponent } from './categories/categories.component';
 
 registerLocaleData(ptBr);
 
@@ -47,7 +48,8 @@ registerLocaleData(ptBr);
     ProdutosComponent,
     CentroDeCustoComponent,
     RelatoriosComponent,
-    DashboardComponent
+    DashboardComponent,
+    CategoriesComponent
     
   ],
   imports: [
