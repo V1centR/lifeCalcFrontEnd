@@ -24,4 +24,12 @@ export class CategoryService {
     }
     return this.http.post(`${this.LC_API}/cat/insert`, categoria);
   }
+
+  findAllCategory(): Observable<any> {
+    return this.http.get(`${this.LC_API}/cat/all`);
+  }
+
+  findById(id: number): Observable<any> {
+    return this.http.get(`${this.LC_API}/distributor/${id}`);
+  }
 }
