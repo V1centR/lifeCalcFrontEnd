@@ -9,7 +9,7 @@ import { CentroCustoModel } from "../model/centro-custo.model";
 export class CentroCustoService {
 
 
-  LC_API:string = "http://192.168.50.105:8080/api";
+  LC_API:string = "http://192.168.50.45:8080/api";
 
   constructor(private http: HttpClient) { }
 
