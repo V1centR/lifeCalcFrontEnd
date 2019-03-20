@@ -28,23 +28,24 @@ export class CategoriesComponent implements OnInit {
   register(){
 
     console.log(this.categoria);
+    this.msgsRegister = [];
 
     this.categoriService.create(this.categoria).toPromise().then(res => {
 
-      if (res === "CREATED") {
+      if (res == "CREATED") {
         this.form.reset();
         this.msgsRegister.push({severity:'success', summary:'OK!', detail:'Item registrado com sucesso'});
         //this.getCategories();
         //this. getCenterCosts();
       }
 
-      if(res === "INTERNAL_SERVER_ERROR"){
-        this.msgsRegister.push({severity:'err', summary:'ERROR!', detail:'Tente novamente.'});
-      }
+    }).catch(err => {
 
-    }).catch();
+      this.msgsRegister.push({severity:'err', summary:'ERROR!', detail:'Tente novamente.' + err});
 
-    this.msgsRegister.push({severity:'err', summary:'ERROR!', detail:'Tente novamente.'});
+    });
+
+    
   }
 
   getCategories(){

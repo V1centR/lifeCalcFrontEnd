@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class OperationService {
 
-  LC_API:string = "http://192.168.50.105:8080/api";
+  LC_API:string = "http://192.168.50.76:8080/api";
 
   constructor(private http: HttpClient) { }
 
